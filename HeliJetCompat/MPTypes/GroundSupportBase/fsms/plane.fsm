@@ -1,0 +1,860 @@
+/*%FSM<COMPILE "scriptedFSM.cfg, plane">*/
+/*%FSM<HEAD>*/
+/*
+item0[] = {"init",0,250,-220.000000,-870.000000,-130.000000,-820.000000,0.000000,"init"};
+item1[] = {"has_pilot",4,218,-220.000000,-660.000000,-130.000000,-610.000000,0.000000,"has pilot"};
+item2[] = {"_",8,218,-220.000000,-800.000000,-130.000000,-750.000000,0.000000,""};
+item3[] = {"default_state_no",2,250,-220.000000,-730.000000,-130.000000,-680.000000,0.000000,"default state" \n "no pilot"};
+item4[] = {"default_state_pilot",2,250,-220.000000,-580.000000,-130.000000,-530.000000,0.000000,"default state" \n "pilot inside"};
+item5[] = {"no_pilot",4,218,-340.000000,-580.000000,-250.000000,-530.000000,0.000000,"no pilot"};
+item6[] = {"",7,210,-299.000000,-709.000000,-291.000000,-701.000000,0.000000,""};
+item7[] = {"sitting_on_resup",2,250,-100.000000,-270.000000,-10.000000,-220.000000,0.000000,"sitting on" \n "resupply"};
+item8[] = {"resupplying___",2,250,-100.000000,-80.000000,-10.000000,-30.000000,0.000000,"resupplying..."};
+item9[] = {"resupply_can_sta",4,218,-100.000000,-190.000000,-10.000000,-140.000000,0.000000,"resupply" \n "can start"};
+item10[] = {"on_ground",4,218,140.000000,-270.000000,230.000000,-220.000000,0.000000,"on ground"};
+item11[] = {"destroyed",4,218,10.000000,90.000000,100.000000,140.000000,100.000000,"destroyed"};
+item12[] = {"destroyed",2,250,140.000000,90.000000,230.000000,140.000000,0.000000,"destroyed"};
+item13[] = {"__resupply",4,218,-100.000000,-350.000000,-10.000000,-300.000000,50.000000,"@resupply"};
+item14[] = {"evac_helicopter",2,250,460.000000,-450.000000,550.000000,-400.000000,0.000000,"evac" \n "helicopter"};
+item15[] = {"wait",4,218,-340.000000,-80.000000,-250.000000,-30.000000,0.000000,"wait"};
+item16[] = {"",7,210,501.000000,-323.999969,508.999969,-316.000031,0.000000,""};
+item17[] = {"",7,210,611.000000,-323.999969,619.000000,-316.000031,0.000000,""};
+item18[] = {"",7,210,391.000000,-323.999969,398.999969,-316.000031,0.000000,""};
+item19[] = {"at_base_on_point",4,218,350.000000,-270.000000,440.000000,-220.000000,100.000000,"at base" \n "on point"};
+item20[] = {"at_base",4,218,460.000000,-270.000000,550.000000,-220.000000,50.000000,"at base"};
+item21[] = {"outside_base",8,218,570.000000,-270.000000,660.000000,-220.000000,0.000000,"outside base"};
+item22[] = {"",7,210,-419.000000,-129.117432,-411.000000,-121.117432,0.000000,""};
+item23[] = {"resupplied",2,250,-340.000000,-150.000000,-250.000000,-100.000000,0.000000,"resupplied"};
+item24[] = {"delete_veh__crew",2,250,350.000000,-200.000000,440.000000,-150.000000,0.000000,"delete veh." \n "crew runs" \n "to evac pt."};
+item25[] = {"destroy_veh__crew",2,250,460.000000,-200.000000,550.000000,-150.000000,0.000000,"destroy veh." \n "crew runs" \n "to evac pt."};
+item26[] = {"destroy_veh__crew_1",2,250,570.000000,-200.000000,660.000000,-150.000000,0.000000,"destroy veh." \n "crew calls" \n "4 evac"};
+item27[] = {"moved",4,218,-460.000000,-270.000000,-370.000000,-220.000000,90.000000,"moved"};
+item28[] = {"not_on_resupply",2,250,-460.000000,-580.000000,-370.000000,-530.000000,0.000000,"not on" \n "resupply point"};
+item29[] = {"",7,210,-419.000000,-639.000000,-411.000000,-631.000000,0.000000,""};
+item30[] = {"",7,210,-58.999996,-559.000000,-51.000000,-551.000000,0.000000,""};
+item31[] = {"",7,210,51.000000,-559.000000,59.000000,-551.000000,0.000000,""};
+item32[] = {"",7,210,-59.000000,-709.000000,-51.000000,-701.000000,0.000000,""};
+item33[] = {"",7,210,-419.000000,111.000000,-411.000000,119.000000,0.000000,""};
+item34[] = {"",7,210,391.000000,-114.000000,399.000000,-106.000000,0.000000,""};
+item35[] = {"",7,210,501.000031,-114.000000,509.000000,-106.000000,0.000000,""};
+item36[] = {"",7,210,611.000000,-114.000000,619.000000,-106.000000,0.000000,""};
+item37[] = {"no_one_inside",4,218,460.000000,-80.000000,550.000000,-30.000000,0.000000,"no one" \n "inside"};
+item38[] = {"waiting_for_dest",2,250,460.000000,-10.000000,550.000000,40.000000,0.000000,"waiting for" \n "destruct"};
+item39[] = {"respawn_timer",4,218,460.000000,60.000000,550.000000,110.000000,0.000000,"respawn" \n "timer"};
+item40[] = {"end",1,250,460.000000,130.000000,550.000000,180.000000,0.000000,"end"};
+item41[] = {"isNull",4,218,10.000000,-730.000000,100.000000,-680.000000,200.000000,"isNull"};
+item42[] = {"NULL",1,250,10.000000,-870.000000,100.000000,-820.000000,0.000000,"NULL"};
+item43[] = {"timer",4,218,-100.000000,-510.000000,-10.000000,-460.000000,0.000000,"timer"};
+item44[] = {"_",2,250,-100.000000,-440.000000,-10.000000,-390.000000,0.000000,""};
+item45[] = {"",7,210,-179.000000,-419.000000,-171.000000,-411.000000,0.000000,""};
+item46[] = {"",7,210,51.000000,-419.000000,59.000000,-411.000000,0.000000,""};
+item47[] = {"",7,210,-299.000000,-419.000000,-291.000000,-411.000000,0.000000,""};
+item48[] = {"has_pilot",4,218,-220.000000,-510.000000,-130.000000,-460.000000,0.000000,"has pilot"};
+item49[] = {"on_ground___not",2,250,140.000000,-600.000000,230.000000,-550.000000,0.000000,"on ground" \n "&" \n "not moving"};
+item50[] = {"time_to_evac",4,218,460.000000,-600.000000,550.000000,-550.000000,0.000000,"time" \n "to evac"};
+item51[] = {"",7,210,51.000000,-249.000000,59.000000,-241.000000,0.000000,""};
+item52[] = {"",7,210,51.000000,-59.000000,59.000000,-51.000000,0.000000,""};
+link0[] = {0,2};
+link1[] = {1,4};
+link2[] = {2,3};
+link3[] = {3,1};
+link4[] = {3,32};
+link5[] = {4,5};
+link6[] = {4,30};
+link7[] = {5,6};
+link8[] = {6,3};
+link9[] = {7,9};
+link10[] = {7,27};
+link11[] = {7,51};
+link12[] = {8,15};
+link13[] = {8,52};
+link14[] = {9,8};
+link15[] = {10,49};
+link16[] = {11,12};
+link17[] = {12,10};
+link18[] = {13,7};
+link19[] = {14,16};
+link20[] = {15,23};
+link21[] = {16,17};
+link22[] = {16,18};
+link23[] = {16,20};
+link24[] = {17,21};
+link25[] = {18,19};
+link26[] = {19,24};
+link27[] = {20,25};
+link28[] = {21,26};
+link29[] = {22,27};
+link30[] = {22,33};
+link31[] = {23,22};
+link32[] = {23,47};
+link33[] = {24,34};
+link34[] = {25,35};
+link35[] = {26,36};
+link36[] = {27,28};
+link37[] = {28,5};
+link38[] = {28,29};
+link39[] = {29,1};
+link40[] = {30,31};
+link41[] = {30,43};
+link42[] = {31,41};
+link43[] = {31,46};
+link44[] = {32,30};
+link45[] = {33,11};
+link46[] = {34,35};
+link47[] = {35,37};
+link48[] = {36,35};
+link49[] = {37,38};
+link50[] = {38,39};
+link51[] = {39,40};
+link52[] = {41,42};
+link53[] = {43,44};
+link54[] = {44,13};
+link55[] = {44,45};
+link56[] = {44,46};
+link57[] = {45,47};
+link58[] = {45,48};
+link59[] = {46,51};
+link60[] = {47,5};
+link61[] = {48,4};
+link62[] = {49,50};
+link63[] = {50,14};
+link64[] = {51,52};
+link65[] = {52,11};
+globals[] = {0.000000,0,0,0,0,640,480,1,603,6316128,1,-141.718750,872.391174,492.726257,-516.481689,1065,844,1};
+window[] = {2,-1,-1,-1,-1,1074,224,1664,224,3,1087};
+*//*%FSM</HEAD>*/
+class FSM
+{
+        fsmName = "plane";
+        class States
+        {
+                /*%FSM<STATE "init">*/
+                class init
+                {
+                        name = "init";
+                        itemno = 0;
+                        init = /*%FSM<STATEINIT""">*/"private[""_vehicle"",""_base"",""_side"",""_driver"",""_resupplyTime"",""_baseSize""];" \n
+                         "" \n
+                         "_vehicle	= [_this,0,objNull,[objNull]] call bis_fnc_param;" \n
+                         "_base 	= [_this,1,objNull,[objNull]] call bis_fnc_param;" \n
+                         "_side = _base getVariable ""side"";" \n
+                         "_baseSize = _base getVariable [""size"",200];" \n
+                         "_driver = objNull;" \n
+                         "" \n
+                         "private[""_resupplyPoints"",""_nextResupplyTime"",""_resupplyPos"",""_resupplyDuration""];" \n
+                         "" \n
+                         "_resupplyPoints   = _base getVariable [""resupplyPoints"",[]];" \n
+                         "_nextResupplyTime = -10e10;" \n
+                         "_resupplyDuration = 10;" \n
+                         "_resupplyTime = time + 3;" \n
+                         "" \n
+                         "private[""_onGround""];" \n
+                         "" \n
+                         "_onGround = true;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "_">*/
+                                class _
+                                {
+                                        itemno = 2;
+                                        priority = 0.000000;
+                                        to="default_state_no";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "default_state_no">*/
+                class default_state_no
+                {
+                        name = "default_state_no";
+                        itemno = 3;
+                        init = /*%FSM<STATEINIT""">*/"//unlock the vehicle" \n
+                         "if (!isNull _driver && isNull driver _vehicle) then" \n
+                         "{" \n
+                         "	//[""[i][plane.fsm] Vehicle |%1| has no pilot."",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "	_driver = objNull;" \n
+                         "" \n
+                         "	[[_vehicle,""init""],""hjc_fnc_moduleMPTypeGroundSupportBase_lockAircraft"",_vehicle] call bis_fnc_MP;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "isNull">*/
+                                class isNull
+                                {
+                                        itemno = 41;
+                                        priority = 200.000000;
+                                        to="NULL";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _vehicle"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "destroyed">*/
+                                class destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 100.000000;
+                                        to="destroyed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!canMove _vehicle || {(locked _vehicle > 1 && {!isPlayer driver _vehicle || {!alive driver _vehicle}}) || {getPosASL _vehicle select 2 < -0.3}}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timer">*/
+                                class timer
+                                {
+                                        itemno = 43;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _resupplyTime"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "has_pilot">*/
+                                class has_pilot
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="default_state_pilot";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isPlayer(driver _vehicle)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "default_state_pilot">*/
+                class default_state_pilot
+                {
+                        name = "default_state_pilot";
+                        itemno = 4;
+                        init = /*%FSM<STATEINIT""">*/"_resupplyTime = time + 3;" \n
+                         "" \n
+                         "//lock the vehicle" \n
+                         "if (isNull _driver && !isNull driver _vehicle) then" \n
+                         "{" \n
+                         "	//[""[i][plane.fsm] Vehicle |%1| has pilot: %2"",_vehicle,driver _vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "	_driver = driver _vehicle;" \n
+                         "" \n
+                         "	[[_vehicle,""default""],""hjc_fnc_moduleMPTypeGroundSupportBase_lockAircraft"",_vehicle] call bis_fnc_MP;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "isNull">*/
+                                class isNull
+                                {
+                                        itemno = 41;
+                                        priority = 200.000000;
+                                        to="NULL";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull _vehicle"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "destroyed">*/
+                                class destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 100.000000;
+                                        to="destroyed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!canMove _vehicle || {(locked _vehicle > 1 && {!isPlayer driver _vehicle || {!alive driver _vehicle}}) || {getPosASL _vehicle select 2 < -0.3}}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "timer">*/
+                                class timer
+                                {
+                                        itemno = 43;
+                                        priority = 0.000000;
+                                        to="_";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _resupplyTime"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_pilot">*/
+                                class no_pilot
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="default_state_no";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull(driver _vehicle)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "sitting_on_resup">*/
+                class sitting_on_resup
+                {
+                        name = "sitting_on_resup";
+                        itemno = 7;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| landed at re-supply point."",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "_resupplyPos = getPos _vehicle;" \n
+                         "" \n
+                         "//unlock the vehicle" \n
+                         "[[_vehicle,""resupply""],""hjc_fnc_moduleMPTypeGroundSupportBase_lockAircraft"",_vehicle] call bis_fnc_MP;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "destroyed">*/
+                                class destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 100.000000;
+                                        to="destroyed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!canMove _vehicle || {(locked _vehicle > 1 && {!isPlayer driver _vehicle || {!alive driver _vehicle}}) || {getPosASL _vehicle select 2 < -0.3}}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "moved">*/
+                                class moved
+                                {
+                                        itemno = 27;
+                                        priority = 90.000000;
+                                        to="not_on_resupply";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"speed _vehicle > 0.3" \n
+                                         "|| {_vehicle distance _resupplyPos > 5}" \n
+                                         "|| {(getPos _vehicle) select 2 > 0.5}" \n
+                                         "|| {{_vehicle distance _x < 20} count _resupplyPoints == 0}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "resupply_can_sta">*/
+                                class resupply_can_sta
+                                {
+                                        itemno = 9;
+                                        priority = 0.000000;
+                                        to="resupplying___";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(time > _nextResupplyTime)" \n
+                                         "&& {alive _vehicle}" \n
+                                         "&& {isPlayer driver _vehicle && {side driver _vehicle != sideEnemy}}" \n
+                                         "&& {speed _vehicle < 0.3}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "resupplying___">*/
+                class resupplying___
+                {
+                        name = "resupplying___";
+                        itemno = 8;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| is re-supplying ..."",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "private[""_resupplyFSM""];" \n
+                         "" \n
+                         "_resupplyFSM = [_vehicle,_resupplyPos,_resupplyPoints] execFSM ""\A3\Missions_F_Heli\MPTypes\GroundSupportBase\fsms\resupply.fsm"";" \n
+                         "" \n
+                         "_vehicle setVariable [""bis_resupplyFSM"",_resupplyFSM];"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "destroyed">*/
+                                class destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 100.000000;
+                                        to="destroyed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!canMove _vehicle || {(locked _vehicle > 1 && {!isPlayer driver _vehicle || {!alive driver _vehicle}}) || {getPosASL _vehicle select 2 < -0.3}}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "wait">*/
+                                class wait
+                                {
+                                        itemno = 15;
+                                        priority = 0.000000;
+                                        to="resupplied";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"completedFSM _resupplyFSM"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "destroyed">*/
+                class destroyed
+                {
+                        name = "destroyed";
+                        itemno = 12;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| is destroyed!"",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "[""PlaySentenceGlobal"", [_side, ""65_ChopperDown"", false]] call BIS_fnc_moduleMPTypeGroundSupport_playSentence;" \n
+                         "" \n
+                         "if (damage _vehicle < 0.8) then" \n
+                         "{" \n
+                         "	_vehicle setDamage 0.8;" \n
+                         "};" \n
+                         "" \n
+                         "_t = time + 60;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "on_ground">*/
+                                class on_ground
+                                {
+                                        itemno = 10;
+                                        priority = 0.000000;
+                                        to="on_ground___not";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"if ((speed _vehicle < 0.01) && {(getPosATL _vehicle) select 2 < 0.3 || {isTouchingGround _vehicle || {getPosASL _vehicle select 2 < -0.1}}}) then" \n
+                                         "{" \n
+                                         "	_onGround = true;" \n
+                                         "}" \n
+                                         "else" \n
+                                         "{" \n
+                                         "	_onGround = false;" \n
+                                         "};" \n
+                                         "" \n
+                                         "_onGround || {time > _t}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "evac_helicopter">*/
+                class evac_helicopter
+                {
+                        name = "evac_helicopter";
+                        itemno = 14;
+                        init = /*%FSM<STATEINIT""">*/"//[""[ ][plane.fsm] Vehicle |%1| is destroyed & on the ground! TIME TO EVAC!"",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "//if player is renegade then do not trigger the evac; its triggered from player.fsm" \n
+                         "if (!(isPlayer driver _vehicle) || {side driver _vehicle != sideEnemy}) then" \n
+                         "{" \n
+                         "	[_vehicle getVariable [""bis_crewGroup"",grpNull],_base] spawn bis_fnc_moduleMPTypeGroundSupportBase_evacGroup;" \n
+                         "};" \n
+                         "" \n
+                         "if (time > _t) then" \n
+                         "{" \n
+                         "	//[""[x][plane.fsm] Crashed vehicle 'stand still/on ground' condition timed out!""] call bis_fnc_logFormat;" \n
+                         "};" \n
+                         "" \n
+                         "_t = time + 10;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "at_base_on_point">*/
+                                class at_base_on_point
+                                {
+                                        itemno = 19;
+                                        priority = 100.000000;
+                                        to="delete_veh__crew";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_points = (_base getVariable [""evacPoints"",[]]) + (_base getVariable [""respawnPoints"",[]]) + (_base getVariable [""resupplyPoints"",[]]);" \n
+                                         "" \n
+                                         "((_vehicle distance _base) < _baseSize) && {{_vehicle distance _x < 25} count _points > 0}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "at_base">*/
+                                class at_base
+                                {
+                                        itemno = 20;
+                                        priority = 50.000000;
+                                        to="destroy_veh__crew";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"((_vehicle distance _base) < 500)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "outside_base">*/
+                                class outside_base
+                                {
+                                        itemno = 21;
+                                        priority = 0.000000;
+                                        to="destroy_veh__crew_1";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"true"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "resupplied">*/
+                class resupplied
+                {
+                        name = "resupplied";
+                        itemno = 23;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| resupplied!"",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "//update next resupply time" \n
+                         "_nextResupplyTime = time + 15;" \n
+                         ""/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "destroyed">*/
+                                class destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 100.000000;
+                                        to="destroyed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!canMove _vehicle || {(locked _vehicle > 1 && {!isPlayer driver _vehicle || {!alive driver _vehicle}}) || {getPosASL _vehicle select 2 < -0.3}}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "moved">*/
+                                class moved
+                                {
+                                        itemno = 27;
+                                        priority = 90.000000;
+                                        to="not_on_resupply";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"speed _vehicle > 0.3" \n
+                                         "|| {_vehicle distance _resupplyPos > 5}" \n
+                                         "|| {(getPos _vehicle) select 2 > 0.5}" \n
+                                         "|| {{_vehicle distance _x < 20} count _resupplyPoints == 0}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_pilot">*/
+                                class no_pilot
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="default_state_no";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull(driver _vehicle)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "delete_veh__crew">*/
+                class delete_veh__crew
+                {
+                        name = "delete_veh__crew";
+                        itemno = 24;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| was destroyed on a keypoint!"",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "private[""_destructType"",""_destructTime"",""_respawnTime""];" \n
+                         "" \n
+                         "_destructType = ""DELETE"";" \n
+                         "_destructTime = 9;" \n
+                         "_respawnTime = 2;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "no_one_inside">*/
+                                class no_one_inside
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="waiting_for_dest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{canMove _x} count (crew _vehicle) == 0 || {time > _t}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "destroy_veh__crew">*/
+                class destroy_veh__crew
+                {
+                        name = "destroy_veh__crew";
+                        itemno = 25;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| was destroyed in the base!"",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "private[""_destructType"",""_destructTime"",""_respawnTime""];" \n
+                         "" \n
+                         "_destructType = ""DESTROY"";" \n
+                         "_destructTime = 45;" \n
+                         "_respawnTime = 2;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "no_one_inside">*/
+                                class no_one_inside
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="waiting_for_dest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{canMove _x} count (crew _vehicle) == 0 || {time > _t}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "destroy_veh__crew_1">*/
+                class destroy_veh__crew_1
+                {
+                        name = "destroy_veh__crew_1";
+                        itemno = 26;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| was destroyed outside of the base!"",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "_destructType = ""DESTROY"";" \n
+                         "_destructTime = 60;" \n
+                         "_respawnTime = 2;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "no_one_inside">*/
+                                class no_one_inside
+                                {
+                                        itemno = 37;
+                                        priority = 0.000000;
+                                        to="waiting_for_dest";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"{canMove _x} count (crew _vehicle) == 0 || {time > _t}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "not_on_resupply">*/
+                class not_on_resupply
+                {
+                        name = "not_on_resupply";
+                        itemno = 28;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| has moved from re-supply point."",_vehicle] call bis_fnc_logFormat;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "has_pilot">*/
+                                class has_pilot
+                                {
+                                        itemno = 1;
+                                        priority = 0.000000;
+                                        to="default_state_pilot";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isPlayer(driver _vehicle)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_pilot">*/
+                                class no_pilot
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="default_state_no";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull(driver _vehicle)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "waiting_for_dest">*/
+                class waiting_for_dest
+                {
+                        name = "waiting_for_dest";
+                        itemno = 38;
+                        init = /*%FSM<STATEINIT""">*/"if (time > _t) then" \n
+                         "{" \n
+                         "	//[""[x][plane.fsm] Crashed vehicle 'no one inside' condition timed out!""] call bis_fnc_logFormat;" \n
+                         "};" \n
+                         "" \n
+                         "_destructTime = _destructTime + time;" \n
+                         "_respawnTime = _respawnTime + time;" \n
+                         "" \n
+                         "//postpone the destruction" \n
+                         "[_vehicle,_destructTime,_destructType] spawn" \n
+                         "{" \n
+                         "	_vehicle = _this select 0;" \n
+                         "	_destructTime = _this select 1;" \n
+                         "	_destructType = _this select 2;" \n
+                         "" \n
+                         "	waitUntil" \n
+                         "	{" \n
+                         "		sleep 1;" \n
+                         "" \n
+                         "		(time > _destructTime) || {isNull _vehicle}" \n
+                         "	};" \n
+                         "" \n
+                         "	if (isNull _vehicle) exitWith {};" \n
+                         "" \n
+                         "	if (_destructType == ""DELETE"") then" \n
+                         "	{" \n
+                         "		{[_vehicle,_x] call bis_fnc_deleteVehicleCrew} forEach (crew _vehicle);" \n
+                         "" \n
+                         "		deleteVehicle _vehicle;" \n
+                         "	}" \n
+                         "	else" \n
+                         "	{" \n
+                         "		_vehicle setDamage 1;" \n
+                         "	};" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "respawn_timer">*/
+                                class respawn_timer
+                                {
+                                        itemno = 39;
+                                        priority = 0.000000;
+                                        to="end";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"time > _respawnTime"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "end">*/
+                class end
+                {
+                        name = "end";
+                        itemno = 40;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| is going to respawn."",_vehicle] call bis_fnc_logFormat;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "NULL">*/
+                class NULL
+                {
+                        name = "NULL";
+                        itemno = 42;
+                        init = /*%FSM<STATEINIT""">*/"//[""[x][plane.fsm] Plane become NULL!""] call bis_fnc_logFormat;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "_">*/
+                class _
+                {
+                        name = "_";
+                        itemno = 44;
+                        init = /*%FSM<STATEINIT""">*/"if ((speed _vehicle < 0.01) && {(getPosATL _vehicle) select 2 < 0.3 || {isTouchingGround _vehicle}}) then" \n
+                         "{" \n
+                         "	_onGround = true;" \n
+                         "}" \n
+                         "else" \n
+                         "{" \n
+                         "	_onGround = false;" \n
+                         "};"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "destroyed">*/
+                                class destroyed
+                                {
+                                        itemno = 11;
+                                        priority = 100.000000;
+                                        to="destroyed";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"!canMove _vehicle || {(locked _vehicle > 1 && {!isPlayer driver _vehicle || {!alive driver _vehicle}}) || {getPosASL _vehicle select 2 < -0.3}}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "__resupply">*/
+                                class __resupply
+                                {
+                                        itemno = 13;
+                                        priority = 50.000000;
+                                        to="sitting_on_resup";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"_onGround" \n
+                                         "&& {alive _vehicle}" \n
+                                         "&& {(_vehicle distance _base) < _baseSize} " \n
+                                         "&& {{_vehicle distance _x < 20} count _resupplyPoints > 0}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "no_pilot">*/
+                                class no_pilot
+                                {
+                                        itemno = 5;
+                                        priority = 0.000000;
+                                        to="default_state_no";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isNull(driver _vehicle)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                                /*%FSM<LINK "has_pilot">*/
+                                class has_pilot
+                                {
+                                        itemno = 48;
+                                        priority = 0.000000;
+                                        to="default_state_pilot";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"isPlayer(driver _vehicle)"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+                /*%FSM<STATE "on_ground___not">*/
+                class on_ground___not
+                {
+                        name = "on_ground___not";
+                        itemno = 49;
+                        init = /*%FSM<STATEINIT""">*/"//[""[i][plane.fsm] Vehicle |%1| is destroyed & on the ground!"",_vehicle] call bis_fnc_logFormat;" \n
+                         "" \n
+                         "//_driver = driver _vehicle;" \n
+                         "_crew = units (_vehicle getVariable [""bis_crewGroup"",grpNull]);" \n
+                         "" \n
+                         "//kill disabled crew" \n
+                         "{" \n
+                         "	if !(canStand _x) then {_x setDamage 1};" \n
+                         "}" \n
+                         "forEach _crew;" \n
+                         "" \n
+                         "private[""_evacTime""];" \n
+                         "" \n
+                         "_evacTime = time + 3;"/*%FSM</STATEINIT""">*/;
+                        precondition = /*%FSM<STATEPRECONDITION""">*/""/*%FSM</STATEPRECONDITION""">*/;
+                        class Links
+                        {
+                                /*%FSM<LINK "time_to_evac">*/
+                                class time_to_evac
+                                {
+                                        itemno = 50;
+                                        priority = 0.000000;
+                                        to="evac_helicopter";
+                                        precondition = /*%FSM<CONDPRECONDITION""">*/""/*%FSM</CONDPRECONDITION""">*/;
+                                        condition=/*%FSM<CONDITION""">*/"(!isNull _driver && {!alive _driver || {!(_driver in _vehicle)}}) || {time > _evacTime}"/*%FSM</CONDITION""">*/;
+                                        action=/*%FSM<ACTION""">*/""/*%FSM</ACTION""">*/;
+                                };
+                                /*%FSM</LINK>*/
+                        };
+                };
+                /*%FSM</STATE>*/
+        };
+        initState="init";
+        finalStates[] =
+        {
+                "end",
+                "NULL",
+        };
+};
+/*%FSM</COMPILE>*/
