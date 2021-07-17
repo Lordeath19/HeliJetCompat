@@ -8,7 +8,7 @@ class CfgPatches
 		requiredAddons[]=
 		{
 			"A3_Data_F_Heli",
-            "A3_Missions_F_Heli",
+			"A3_Missions_F_Heli",
 
 		};
 		requiredVersion=0.1;
